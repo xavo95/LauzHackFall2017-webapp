@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         copy: {
             build: {
                 files: [
-                    {expand: true, cwd: 'angular-app/dist', src: '**/*', dest: 'build/public/'},
+                    {expand: true, cwd: 'public', src: '**/*', dest: 'build/public/'},
                     {expand: true, src: 'middlewares/**/*', dest: 'build/'},
                     {expand: true, src: 'models/**/*', dest: 'build/'},
                     {expand: true, src: 'controllers/**/*', dest: 'build/'},
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
             },
             release: {
                 files: [
-                    {expand: true, cwd: 'angular-app/dist', src: '**/*', dest: 'release/public/'},
+                    {expand: true, cwd: 'public', src: '**/*', dest: 'release/public/'},
                     {expand: true, src: 'middlewares/**/*', dest: 'release/'},
                     {expand: true, src: 'models/**/*', dest: 'release/'},
                     {expand: true, src: 'controllers/**/*', dest: 'release/'},
@@ -42,11 +42,9 @@ module.exports = function(grunt) {
         },
         exec: {
             install_npm_main: 'npm install',
-            install_npm_angular: 'cd angular-app && npm install && cd ..',
-            ng_build: 'cd angular-app && ng build && cd ..',
             run_express: 'node app.js',
-            install_npm_build: 'cd build && npm install && cd public && npm install && cd ../..',
-            install_npm_release: 'cd release && npm install && cd public && npm install && cd ../..'
+            install_npm_build: 'cd build && npm install && cd ..',
+            install_npm_release: 'cd release && npm install && cd ..'
         },
         // NOT USED YET
         uglify: {
@@ -168,11 +166,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-mocha-test');
 
     // Task(s).
-    grunt.registerTask('install_deps', ['exec:install_npm_main', 'exec:install_npm_angular']);
-    grunt.registerTask('jshint_and_angular_build', ['jshint', 'exec:ng_build']);
+    grunt.registerTask('install_deps', ['exec:install_npm_main']);
 
-    grunt.registerTask('build', ['jshint_and_angular_build', 'mochaTest', 'copy:build', 'exec:install_npm_build']);
-    grunt.registerTask('release', ['jshint_and_angular_build', 'mochaTest', 'copy:release', 'exec:install_npm_release']);
+    grunt.registerTask('build', ['jshint', 'mochaTest', 'copy:build', 'exec:install_npm_build']);
+    grunt.registerTask('release', ['jshint', 'mochaTest', 'copy:release', 'exec:install_npm_release']);
     grunt.registerTask('run', ['build', 'exec:run_express']);
     grunt.registerTask('default', ['install_deps', 'build']);
 };

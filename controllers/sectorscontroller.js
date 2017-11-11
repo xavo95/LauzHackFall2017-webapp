@@ -41,17 +41,9 @@ function addSectorIfNotExists(sector_name, industry_name, sector, industry) {
     });
 }
 
-function getSectors() {
+function getSectors(callback) {
     Sectors.find({}, function (err, sectors) {
-        if (err) {
-            return ({message: 'Error performing the query: ' + err});
-        } else if (!sectors) {
-            return ({message: 'There is no sectors on database'});
-        } else if (sectors.length === 0) {
-            return ({message: 'There is no sectors on database'});
-        } else {
-            return sectors;
-        }
+        callback(err, sectors);
     });
 }
 

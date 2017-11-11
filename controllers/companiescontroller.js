@@ -50,17 +50,9 @@ function addCompanyIfNotExists(name, symbol, is_part_of_smi, sector, isin_code, 
     });
 }
 
-function getCompanies() {
+function getCompanies(callback) {
     Companies.find({}, function (err, companies) {
-        if (err) {
-            return ({message: 'Error performing the query: ' + err});
-        } else if (!companies) {
-            return ({message: 'There is no companies on database'});
-        } else if (companies.length === 0) {
-            return ({message: 'There is no companies on database'});
-        } else {
-            return companies;
-        }
+        callback(err, companies);
     });
 }
 

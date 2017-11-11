@@ -6,5 +6,3 @@ services:
 before_script:
 - npm install grunt-cli -g
 - mongoimport -d lauzhack2017 -c prices --type csv --file data/prices.csv --headerline
-- cd angular-app && npm install && cd ..
-- npm install -g @angular/cli
