@@ -1,0 +1,130 @@
+SECTOR_NAME;INDUSTRY_NAME;SECTOR;INDUSTRY
+Non-Energy Minerals;Steel;1100;5
+Non-Energy Minerals;Aluminum;1100;15
+Non-Energy Minerals;Precious Metals;1100;20
+Non-Energy Minerals;Other Metals/Minerals;1100;25
+Non-Energy Minerals;Forest Products;1100;30
+Non-Energy Minerals;Construction Materials;1100;35
+Producer Manufacturing;Metal Fabrication;1200;5
+Producer Manufacturing;Industrial Machinery;1200;10
+Producer Manufacturing;Trucks/Construction/Farm Machinery;1200;20
+Producer Manufacturing;Auto Parts: OEM;1200;25
+Producer Manufacturing;Building Products;1200;30
+Producer Manufacturing;Electrical Products;1200;35
+Producer Manufacturing;Office Equipment/Supplies;1200;45
+Producer Manufacturing;Miscellaneous Manufacturing;1200;50
+Producer Manufacturing;Industrial Conglomerates;1200;55
+Electronic Technology;Semiconductors;1300;5
+Electronic Technology;Electronic Components;1300;10
+Electronic Technology;Electronic Equipment/Instruments;1300;15
+Electronic Technology;Telecommunications Equipment;1300;20
+Electronic Technology;Aerospace & Defense;1300;30
+Electronic Technology;Computer Processing Hardware;1300;40
+Electronic Technology;Computer Peripherals;1300;45
+Electronic Technology;Computer Communications;1300;52
+Electronic Technology;Electronic Production Equipment;1300;55
+Consumer Durables;Motor Vehicles;1400;5
+Consumer Durables;Automotive Aftermarket;1400;10
+Consumer Durables;Homebuilding;1400;15
+Consumer Durables;Home Furnishings;1400;20
+Consumer Durables;Electronics/Appliances;1400;25
+Consumer Durables;Tools & Hardware;1400;30
+Consumer Durables;Recreational Products;1400;35
+Consumer Durables;Other Consumer Specialties;1400;45
+Energy Minerals;Oil & Gas Production;2100;5
+Energy Minerals;Integrated Oil;2100;10
+Energy Minerals;Oil Refining/Marketing;2100;20
+Energy Minerals;Coal;2100;25
+Process Industries;Chemicals: Major Diversified;2200;5
+Process Industries;Chemicals: Specialty;2200;10
+Process Industries;Chemicals: Agricultural;2200;15
+Process Industries;Textiles;2200;20
+Process Industries;Agricultural Commodities/Milling;2200;25
+Process Industries;Pulp & Paper;2200;30
+Process Industries;Containers/Packaging;2200;35
+Process Industries;Industrial Specialties;2200;40
+Health Technology;Pharmaceuticals: Major;2300;5
+Health Technology;Pharmaceuticals: Other;2300;10
+Health Technology;Pharmaceuticals: Generic;2300;15
+Health Technology;Biotechnology;2300;20
+Health Technology;Medical Specialties;2300;25
+Consumer Non-Durables;Food: Major Diversified;2400;5
+Consumer Non-Durables;Food: Specialty/Candy;2400;10
+Consumer Non-Durables;Food: Meat/Fish/Dairy;2400;15
+Consumer Non-Durables;Beverages: Non-Alcoholic;2400;20
+Consumer Non-Durables;Beverages: Alcoholic;2400;25
+Consumer Non-Durables;Tobacco;2400;30
+Consumer Non-Durables;Household/Personal Care;2400;35
+Consumer Non-Durables;Apparel/Footwear;2400;40
+Consumer Non-Durables;Consumer Sundries;2400;50
+Industrial Services;Contract Drilling;3100;5
+Industrial Services;Oilfield Services/Equipment;3100;10
+Industrial Services;Engineering & Construction;3100;15
+Industrial Services;Environmental Services;3100;20
+Industrial Services;Oil & Gas Pipelines;3100;30
+Commercial Services;Miscellaneous Commercial Services;3200;5
+Commercial Services;Advertising/Marketing Services;3200;10
+Commercial Services;Commercial Printing/Forms;3200;15
+Commercial Services;Financial Publishing/Services;3200;20
+Commercial Services;Personnel Services;3200;35
+Distribution Services;Wholesale Distributors;3250;55
+Distribution Services;Food Distributors;3250;60
+Distribution Services;Electronics Distributors;3250;65
+Distribution Services;Medical Distributors;3250;70
+Technology Services;Data Processing Services;3300;5
+Technology Services;Information Technology Services;3300;8
+Technology Services;Packaged Software;3300;10
+Technology Services;Internet Software/Services;3300;20
+Health Services;Managed Health Care;3350;55
+Health Services;Hospital/Nursing Management;3350;60
+Health Services;Medical/Nursing Services;3350;65
+Health Services;Services to the Health Industry;3350;70
+Consumer Services;Media Conglomerates;3400;5
+Consumer Services;Broadcasting;3400;10
+Consumer Services;Cable/Satellite TV;3400;15
+Consumer Services;Publishing: Newspapers;3400;20
+Consumer Services;Publishing: Books/Magazines;3400;25
+Consumer Services;Movies/Entertainment;3400;30
+Consumer Services;Restaurants;3400;35
+Consumer Services;Hotels/Resorts/Cruiselines;3400;40
+Consumer Services;Casinos/Gaming;3400;45
+Consumer Services;Other Consumer Services;3400;50
+Retail Trade;Food Retail;3500;5
+Retail Trade;Drugstore Chains;3500;10
+Retail Trade;Department Stores;3500;15
+Retail Trade;Discount Stores;3500;20
+Retail Trade;Apparel/Footwear Retail;3500;25
+Retail Trade;Home Improvement Chains;3500;30
+Retail Trade;Electronics/Appliance Stores;3500;35
+Retail Trade;Specialty Stores;3500;40
+Retail Trade;Catalog/Specialty Distribution;3500;45
+Retail Trade;Internet Retail;3500;50
+Transportation;Air Freight/Couriers;4600;5
+Transportation;Airlines;4600;10
+Transportation;Trucking;4600;15
+Transportation;Railroads;4600;20
+Transportation;Marine Shipping;4600;25
+Transportation;Other Transportation;4600;30
+Utilities;Electric Utilities;4700;5
+Utilities;Gas Distributors;4700;35
+Utilities;Water Utilities;4700;55
+Utilities;Alternative Power Generation;4700;60
+Finance;Major Banks;4800;5
+Finance;Regional Banks;4800;10
+Finance;Savings Banks;4800;25
+Finance;Finance/Rental/Leasing;4800;30
+Finance;Investment Banks/Brokers;4800;40
+Finance;Investment Managers;4800;45
+Finance;Financial Conglomerates;4800;50
+Finance;Property/Casualty Insurance;4800;55
+Finance;Multi-Line Insurance;4800;60
+Finance;Life/Health Insurance;4800;65
+Finance;Specialty Insurance;4800;75
+Finance;Insurance Brokers/Services;4800;80
+Finance;Real Estate Development;4800;85
+Finance;Real Estate Investment Trusts;4800;90
+Communications;Major Telecommunications;4900;5
+Communications;Specialty Telecommunications;4900;10
+Communications;Wireless Telecommunications;4900;15
+Miscellaneous;Miscellaneous;6000;5
+Miscellaneous;Investment Trusts/Mutual Funds;6000;10
