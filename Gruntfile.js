@@ -11,6 +11,9 @@ module.exports = function(grunt) {
                 files: [
                     {expand: true, cwd: 'angular-app/dist', src: '**/*', dest: 'build/public/'},
                     {expand: true, src: 'middlewares/**/*', dest: 'build/'},
+                    {expand: true, src: 'models/**/*', dest: 'build/'},
+                    {expand: true, src: 'controllers/**/*', dest: 'build/'},
+                    {expand: true, src: 'data/**/*', dest: 'build/'},
                     {expand: true, src: 'routes/**/*', dest: 'build/'},
                     {expand: true, src: '*.js', dest: 'build/'},
                     {expand: true, src: 'package.json', dest: 'build/'},
@@ -21,6 +24,9 @@ module.exports = function(grunt) {
                 files: [
                     {expand: true, cwd: 'angular-app/dist', src: '**/*', dest: 'release/public/'},
                     {expand: true, src: 'middlewares/**/*', dest: 'release/'},
+                    {expand: true, src: 'models/**/*', dest: 'release/'},
+                    {expand: true, src: 'controllers/**/*', dest: 'release/'},
+                    {expand: true, src: 'data/**/*', dest: 'release/'},
                     {expand: true, src: 'routes/**/*', dest: 'release/'},
                     {expand: true, src: '*.js', dest: 'release/'},
                     {expand: true, src: 'package.json', dest: 'release/'},
@@ -32,7 +38,7 @@ module.exports = function(grunt) {
             options: {
                 node: true
             },
-            all: ['Gruntfile.js', 'app.js', 'middlewares/**/*.js', 'routes/**/*.js']
+            all: ['Gruntfile.js', 'app.js', 'middlewares/**/*.js', 'routes/**/*.js', 'controllers/**/*.js','models/**/*.js']
         },
         exec: {
             install_npm_main: 'npm install',
