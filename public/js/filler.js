@@ -238,6 +238,7 @@ function plotCompanyCandleStickMultiple(company_array) {
 
     var layout = {
         dragmode: 'zoom',
+        height: 1000,
         margin: {
             r: 10,
             t: 25,
@@ -313,7 +314,8 @@ function plotCompanyTimeSeriesMultiple(company_array) {
     }
 
     var layout = {
-        title: 'Basic Time Series of: '
+        title: 'Basic Time Series of: ',
+        height: 1000
     };
 
     Plotly.purge('plotly-div-sector-time');
@@ -359,7 +361,8 @@ function plotCompanyTimeSeriesVolumeMultiple(company_array) {
     }
 
     var layout = {
-        title: 'Volume of transaction for: '
+        title: 'Volume of transaction for: ',
+        height: 1000
     };
 
     Plotly.purge('plotly-div-sector-time-volume');
