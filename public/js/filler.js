@@ -53,7 +53,7 @@ function selectSector(index) {
         plotCompanyTimeSeriesMultiple(data);
         plotCompanyCandleStickMultiple(data);
         plotCompanyTimeSeriesVolumeMultiple(data);
-        plotCompanyTimeSeriesSpendMoneyMultiple(data);
+        //plotCompanyTimeSeriesSpendMoneyMultiple(data);
     }).fail(function (data) {
         console.log(data);
     });
@@ -75,7 +75,7 @@ function selectCompany(index) {
         var absMin = data[0]["MIN"];
         var volumeArray = [];
         var spendMoneyArray = [];
-        for(var i = 0; i < data.length; i++) {
+        for (var i = 0; i < data.length; i++) {
             timestampArray.push(data[i]["TIMESTAMP"]);
             openArray.push(data[i]["OPEN"]);
             closeArray.push(data[i]["CLOSE"]);
@@ -92,7 +92,7 @@ function selectCompany(index) {
         plotCompanyTimeSeries(timestampArray, maxArray, minArray, companiesArray[index]["NAME"]);
         plotCompanyCandleStick(timestampArray, openArray, closeArray, maxArray, minArray, absMax, absMin, companiesArray[index]["NAME"]);
         plotCompanyTimeSeriesVolume(timestampArray, volumeArray, companiesArray[index]["NAME"]);
-        plotCompanyTimeSeriesSpendMoney(timestampArray, spendMoneyArray, companiesArray[index]["NAME"]);
+        //plotCompanyTimeSeriesSpendMoney(timestampArray, spendMoneyArray, companiesArray[index]["NAME"]);
     }).fail(function (data) {
         console.log(data);
     });
@@ -164,7 +164,7 @@ function plotCompanyTimeSeries(timestampArray, maxArray, minArray, company_name)
         line: {color: '#7F7F7F'}
     };
 
-    var data = [trace1,trace2];
+    var data = [trace1, trace2];
 
     var layout = {
         title: 'Basic Time Series of: ' + company_name
@@ -186,9 +186,38 @@ function plotCompanyTimeSeriesVolume(timestampArray, volume, company_name) {
 
     var data = [trace1];
 
+    var average = 0;
+    for (var i = 0; i < volume.length; i++) {
+        average += volume[i];
+    }
+    average = average / volume.length;
+    var thresholds = average * 5;
+
     var layout = {
-        title: 'Volume of transaction for: ' + company_name
+        title: 'Volume of transaction for: ' + company_name,
+        shapes: []
     };
+
+    for (var j = 0; j < volume.length; j++) {
+        if (volume[j] > thresholds) {
+            layout.shapes.push({
+                type: 'rect',
+                xref: 'x',
+                yref: 'paper',
+                x0: timestampArray[j],
+                y0: 0,
+                x1: timestampArray[j + 1],
+                y1: 1,
+                fillcolor: '#707070',
+                opacity: 0.2,
+                line: {
+                    width: 0
+                }
+            });
+        }
+    }
+
+    // layout.shapes = [];
 
     Plotly.purge('plotly-div-company-time-volume');
     Plotly.plot('plotly-div-company-time-volume', data, layout);
@@ -218,7 +247,7 @@ function plotCompanyCandleStickMultiple(company_array) {
     var data = [];
     var timestampFN = [];
 
-    for(var j = 0; j < company_array.length; j++) {
+    for (var j = 0; j < company_array.length; j++) {
         var data_val = company_array[j];
         var timestampArray = [];
         var openArray = [];
@@ -228,7 +257,7 @@ function plotCompanyCandleStickMultiple(company_array) {
         var absMax = data_val[0]["MAX"];
         var absMin = data_val[0]["MIN"];
         var volumeArray = [];
-        for(var i = 0; i < data_val.length; i++) {
+        for (var i = 0; i < data_val.length; i++) {
             timestampArray.push(data_val[i]["TIMESTAMP"]);
             openArray.push(data_val[i]["OPEN"]);
             closeArray.push(data_val[i]["CLOSE"]);
@@ -293,7 +322,7 @@ function plotCompanyCandleStickMultiple(company_array) {
 function plotCompanyTimeSeriesMultiple(company_array) {
     var data = [];
 
-    for(var j = 0; j < company_array.length; j++) {
+    for (var j = 0; j < company_array.length; j++) {
         var data_val = company_array[j];
         var timestampArray = [];
         var openArray = [];
@@ -303,7 +332,7 @@ function plotCompanyTimeSeriesMultiple(company_array) {
         var absMax = data_val[0]["MAX"];
         var absMin = data_val[0]["MIN"];
         var volumeArray = [];
-        for(var i = 0; i < data_val.length; i++) {
+        for (var i = 0; i < data_val.length; i++) {
             timestampArray.push(data_val[i]["TIMESTAMP"]);
             openArray.push(data_val[i]["OPEN"]);
             closeArray.push(data_val[i]["CLOSE"]);
@@ -349,7 +378,13 @@ function plotCompanyTimeSeriesMultiple(company_array) {
 function plotCompanyTimeSeriesVolumeMultiple(company_array) {
     var data = [];
 
-    for(var j = 0; j < company_array.length; j++) {
+    var layout = {
+        title: 'Volume of transaction for: ',
+        height: 1000,
+        shapes: []
+    };
+
+    for (var j = 0; j < company_array.length; j++) {
         var data_val = company_array[j];
         var timestampArray = [];
         var openArray = [];
@@ -359,7 +394,7 @@ function plotCompanyTimeSeriesVolumeMultiple(company_array) {
         var absMax = data_val[0]["MAX"];
         var absMin = data_val[0]["MIN"];
         var volumeArray = [];
-        for(var i = 0; i < data_val.length; i++) {
+        for (var i = 0; i < data_val.length; i++) {
             timestampArray.push(data_val[i]["TIMESTAMP"]);
             openArray.push(data_val[i]["OPEN"]);
             closeArray.push(data_val[i]["CLOSE"]);
@@ -372,6 +407,33 @@ function plotCompanyTimeSeriesVolumeMultiple(company_array) {
                 absMin = data_val[i]["MIN"];
             }
         }
+
+        var average = 0;
+        for (var o = 0; o < volumeArray.length; o++) {
+            average += volumeArray[o];
+        }
+        average = average / volumeArray.length;
+        var thresholds = average * 5;
+
+        for (var n = 0; n < volumeArray.length; n++) {
+            if (volumeArray[n] > thresholds) {
+                layout.shapes.push({
+                    type: 'rect',
+                    xref: 'x',
+                    yref: 'paper',
+                    x0: timestampArray[n],
+                    y0: 0,
+                    x1: timestampArray[n + 1],
+                    y1: 1,
+                    fillcolor: '#707070',
+                    opacity: 0.2,
+                    line: {
+                        width: 0
+                    }
+                });
+            }
+        }
+
         var trace1 = {
             type: "scatter",
             mode: "lines",
@@ -384,10 +446,7 @@ function plotCompanyTimeSeriesVolumeMultiple(company_array) {
         data.push(trace1);
     }
 
-    var layout = {
-        title: 'Volume of transaction for: ',
-        height: 1000
-    };
+    // layout.shapes = [];
 
     Plotly.purge('plotly-div-sector-time-volume');
     Plotly.plot('plotly-div-sector-time-volume', data, layout);
@@ -396,7 +455,7 @@ function plotCompanyTimeSeriesVolumeMultiple(company_array) {
 function plotCompanyTimeSeriesSpendMoneyMultiple(company_array) {
     var data = [];
 
-    for(var j = 0; j < company_array.length; j++) {
+    for (var j = 0; j < company_array.length; j++) {
         var data_val = company_array[j];
         var timestampArray = [];
         var spendMoneyArray = [];
@@ -407,7 +466,7 @@ function plotCompanyTimeSeriesSpendMoneyMultiple(company_array) {
         var absMax = data_val[0]["MAX"];
         var absMin = data_val[0]["MIN"];
         var volumeArray = [];
-        for(var i = 0; i < data_val.length; i++) {
+        for (var i = 0; i < data_val.length; i++) {
             timestampArray.push(data_val[i]["TIMESTAMP"]);
             openArray.push(data_val[i]["OPEN"]);
             closeArray.push(data_val[i]["CLOSE"]);
