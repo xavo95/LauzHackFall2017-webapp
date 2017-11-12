@@ -53,6 +53,7 @@ function selectSector(index) {
         plotCompanyTimeSeriesMultiple(data);
         plotCompanyCandleStickMultiple(data);
         plotCompanyTimeSeriesVolumeMultiple(data);
+        plotCompanyTimeSeriesSpendMoneyMultiple(data);
     }).fail(function (data) {
         console.log(data);
     });
@@ -73,11 +74,13 @@ function selectCompany(index) {
         var absMax = data[0]["MAX"];
         var absMin = data[0]["MIN"];
         var volumeArray = [];
+        var spendMoneyArray = [];
         for(var i = 0; i < data.length; i++) {
             timestampArray.push(data[i]["TIMESTAMP"]);
             openArray.push(data[i]["OPEN"]);
             closeArray.push(data[i]["CLOSE"]);
             volumeArray.push(data[i]["VOL"]);
+            spendMoneyArray.push(data[i]["SPENDMONEY"]);
             maxArray.push(data[i]["MAX"]);
             minArray.push(data[i]["MIN"]);
             if (absMax < data[i]["MAX"]) {
@@ -89,6 +92,7 @@ function selectCompany(index) {
         plotCompanyTimeSeries(timestampArray, maxArray, minArray, companiesArray[index]["NAME"]);
         plotCompanyCandleStick(timestampArray, openArray, closeArray, maxArray, minArray, absMax, absMin, companiesArray[index]["NAME"]);
         plotCompanyTimeSeriesVolume(timestampArray, volumeArray, companiesArray[index]["NAME"]);
+        plotCompanyTimeSeriesSpendMoney(timestampArray, spendMoneyArray, companiesArray[index]["NAME"]);
     }).fail(function (data) {
         console.log(data);
     });
@@ -190,6 +194,26 @@ function plotCompanyTimeSeriesVolume(timestampArray, volume, company_name) {
     Plotly.plot('plotly-div-company-time-volume', data, layout);
 }
 
+function plotCompanyTimeSeriesSpendMoney(timestampArray, spendmoney, company_name) {
+    var trace1 = {
+        type: "scatter",
+        mode: "lines",
+        name: company_name,
+        x: timestampArray,
+        y: spendmoney,
+        line: {color: '#17BECF'}
+    };
+
+    var data = [trace1];
+
+    var layout = {
+        title: 'Volume of transaction for: ' + company_name
+    };
+
+    Plotly.purge('plotly-div-company-time-spendmoney');
+    Plotly.plot('plotly-div-company-time-spendmoney', data, layout);
+}
+
 function plotCompanyCandleStickMultiple(company_array) {
     var data = [];
     var timestampFN = [];
@@ -238,7 +262,7 @@ function plotCompanyCandleStickMultiple(company_array) {
 
     var layout = {
         dragmode: 'zoom',
-        height: 1200,
+        height: 1000,
         margin: {
             r: 10,
             t: 25,
@@ -315,7 +339,7 @@ function plotCompanyTimeSeriesMultiple(company_array) {
 
     var layout = {
         title: 'Basic Time Series of: ',
-        height: 1200
+        height: 1000
     };
 
     Plotly.purge('plotly-div-sector-time');
@@ -362,11 +386,60 @@ function plotCompanyTimeSeriesVolumeMultiple(company_array) {
 
     var layout = {
         title: 'Volume of transaction for: ',
-        height: 1200
+        height: 1000
     };
 
     Plotly.purge('plotly-div-sector-time-volume');
     Plotly.plot('plotly-div-sector-time-volume', data, layout);
+}
+
+function plotCompanyTimeSeriesSpendMoneyMultiple(company_array) {
+    var data = [];
+
+    for(var j = 0; j < company_array.length; j++) {
+        var data_val = company_array[j];
+        var timestampArray = [];
+        var spendMoneyArray = [];
+        var openArray = [];
+        var closeArray = [];
+        var maxArray = [];
+        var minArray = [];
+        var absMax = data_val[0]["MAX"];
+        var absMin = data_val[0]["MIN"];
+        var volumeArray = [];
+        for(var i = 0; i < data_val.length; i++) {
+            timestampArray.push(data_val[i]["TIMESTAMP"]);
+            openArray.push(data_val[i]["OPEN"]);
+            closeArray.push(data_val[i]["CLOSE"]);
+            volumeArray.push(data_val[i]["VOL"]);
+            spendMoneyArray.push(data_val[i]["SPENDMONEY"]);
+            maxArray.push(data_val[i]["MAX"]);
+            minArray.push(data_val[i]["MIN"]);
+            if (absMax < data_val[i]["MAX"]) {
+                absMax = data_val[i]["MAX"];
+            } else if (absMin > data_val[i]["MIN"]) {
+                absMin = data_val[i]["MIN"];
+            }
+        }
+        var trace1 = {
+            type: "scatter",
+            mode: "lines",
+            name: data_val[0]["NAME"],
+            x: timestampArray,
+            y: spendMoneyArray,
+            line: {color: getRandomColor()}
+        };
+
+        data.push(trace1);
+    }
+
+    var layout = {
+        title: 'Volume of transaction for: ',
+        height: 1000
+    };
+
+    Plotly.purge('plotly-div-sector-time-spendmoney');
+    Plotly.plot('plotly-div-sector-time-spendmoney', data, layout);
 }
 
 function getRandomColor() {

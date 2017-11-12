@@ -73,6 +73,7 @@ function getPricesByISINCode(callback, isin_code) {
         prices_acc_average[0]._doc.MIN = prices_acc_average[0].PRICE;
         prices_acc_average[0]._doc.OPEN = prices_acc_average[0].PRICE;
         prices_acc_average[0]._doc.CLOSE = prices_acc_average[0].PRICE;
+        prices_acc_average[0]._doc.SPENDMONEY = (prices_acc_average[0].PRICE * prices_acc_average[0].VOL);
         for (var k = 1; k < prices_acc.length; k++) {
             var day = prices_acc[k].TIMESTAMP.substring(8, 10);
             var last_day = prices_acc_average[prices_acc_average.length - 1].TIMESTAMP.substring(8, 10);
@@ -85,8 +86,10 @@ function getPricesByISINCode(callback, isin_code) {
                     } else if(prices_acc_average[prices_acc_average.length - 1]._doc.MIN > prices_acc[k].PRICE) {
                         prices_acc_average[prices_acc_average.length - 1]._doc.MIN = prices_acc[k].PRICE;
                     }
+                    prices_acc_average[prices_acc_average.length - 1]._doc.SPENDMONEY += (prices_acc[k].PRICE * prices_acc[k].VOL);
                 } else {
                     prices_acc_average.push(prices_acc[k]);
+                    prices_acc_average[prices_acc_average.length - 1]._doc.SPENDMONEY = (prices_acc_average[prices_acc_average.length - 1].PRICE * prices_acc_average[prices_acc_average.length - 1].VOL);
                     prices_acc_average[prices_acc_average.length - 1]._doc.MAX = prices_acc_average[prices_acc_average.length - 1].PRICE;
                     prices_acc_average[prices_acc_average.length - 1]._doc.MIN = prices_acc_average[prices_acc_average.length - 1].PRICE;
                     prices_acc_average[prices_acc_average.length - 2]._doc.CLOSE = prices_acc_average[prices_acc_average.length - 2].PRICE;
@@ -94,6 +97,7 @@ function getPricesByISINCode(callback, isin_code) {
                 }
             } else {
                 prices_acc_average.push(prices_acc[k]);
+                prices_acc_average[prices_acc_average.length - 1]._doc.SPENDMONEY = (prices_acc_average[prices_acc_average.length - 1].PRICE * prices_acc_average[prices_acc_average.length - 1].VOL);
                 prices_acc_average[prices_acc_average.length - 1]._doc.MAX = prices_acc_average[prices_acc_average.length - 1].PRICE;
                 prices_acc_average[prices_acc_average.length - 1]._doc.MIN = prices_acc_average[prices_acc_average.length - 1].PRICE;
                 prices_acc_average[prices_acc_average.length - 2]._doc.CLOSE = prices_acc_average[prices_acc_average.length - 2].PRICE;
@@ -132,6 +136,7 @@ function getPricesForSector(isin_code, name) {
             prices_acc_average[0]._doc.MIN = prices_acc_average[0].PRICE;
             prices_acc_average[0]._doc.OPEN = prices_acc_average[0].PRICE;
             prices_acc_average[0]._doc.CLOSE = prices_acc_average[0].PRICE;
+            prices_acc_average[0]._doc.SPENDMONEY = (prices_acc_average[0].PRICE * prices_acc_average[0].VOL);
             for (var k = 1; k < prices_acc.length; k++) {
                 var day = prices_acc[k].TIMESTAMP.substring(8, 10);
                 var last_day = prices_acc_average[prices_acc_average.length - 1].TIMESTAMP.substring(8, 10);
@@ -144,8 +149,10 @@ function getPricesForSector(isin_code, name) {
                         } else if(prices_acc_average[prices_acc_average.length - 1]._doc.MIN > prices_acc[k].PRICE) {
                             prices_acc_average[prices_acc_average.length - 1]._doc.MIN = prices_acc[k].PRICE;
                         }
+                        prices_acc_average[prices_acc_average.length - 1]._doc.SPENDMONEY += (prices_acc[k].PRICE * prices_acc[k].VOL);
                     } else {
                         prices_acc_average.push(prices_acc[k]);
+                        prices_acc_average[prices_acc_average.length - 1]._doc.SPENDMONEY = (prices_acc_average[prices_acc_average.length - 1].PRICE * prices_acc_average[prices_acc_average.length - 1].VOL);
                         prices_acc_average[prices_acc_average.length - 1]._doc.MAX = prices_acc_average[prices_acc_average.length - 1].PRICE;
                         prices_acc_average[prices_acc_average.length - 1]._doc.MIN = prices_acc_average[prices_acc_average.length - 1].PRICE;
                         prices_acc_average[prices_acc_average.length - 2]._doc.CLOSE = prices_acc_average[prices_acc_average.length - 2].PRICE;
@@ -153,6 +160,7 @@ function getPricesForSector(isin_code, name) {
                     }
                 } else {
                     prices_acc_average.push(prices_acc[k]);
+                    prices_acc_average[prices_acc_average.length - 1]._doc.SPENDMONEY = (prices_acc_average[prices_acc_average.length - 1].PRICE * prices_acc_average[prices_acc_average.length - 1].VOL);
                     prices_acc_average[prices_acc_average.length - 1]._doc.MAX = prices_acc_average[prices_acc_average.length - 1].PRICE;
                     prices_acc_average[prices_acc_average.length - 1]._doc.MIN = prices_acc_average[prices_acc_average.length - 1].PRICE;
                     prices_acc_average[prices_acc_average.length - 2]._doc.CLOSE = prices_acc_average[prices_acc_average.length - 2].PRICE;
