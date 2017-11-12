@@ -24,8 +24,8 @@
 </nav>
 
 <div class="row">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-8">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
         <div class="panel panel-default">
             <div class="panel-heading">Companies</div>
             <div class="panel-body">
@@ -41,12 +41,40 @@
                 <div class="col-sm-10">
                     <div id="plotly-div-company-time"></div>
                     <div id="plotly-div-company-candle"></div>
+                    <div id="plotly-div-company-time-volume"></div>
                 </div>
                 <div class="col-sm-1"></div>
             </div>
         </div>
     </div>
-    <div class="col-sm-2"></div>
+    <div class="col-sm-1"></div>
+</div>
+
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="panel panel-default">
+            <div class="panel-heading">Sector</div>
+            <div class="panel-body">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select sector
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu" id="sector-dropdown">
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <div id="plotly-div-sector-time"></div>
+                    <div id="plotly-div-sector-candle"></div>
+                    <div id="plotly-div-sector-time-volume"></div>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
 </div>
 
 </body>

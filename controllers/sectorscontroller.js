@@ -47,5 +47,18 @@ function getSectors(callback) {
     });
 }
 
+function getSectorsShort(callback) {
+    Sectors.find({}).sort({SECTOR: 1}).exec(function (err, sectors) {
+        var sectors_acc = [sectors[0]];
+        for(var i = 1; i < sectors.length; i++) {
+            if(sectors_acc[sectors_acc.length - 1]._doc.SECTOR_NAME !== sectors[i]._doc.SECTOR_NAME) {
+                sectors_acc.push(sectors[i]);
+            }
+        }
+        callback(err, sectors_acc);
+    });
+}
+
 module.exports.loadSectorCSV = loadSectorCSV;
 module.exports.getSectors = getSectors;
+module.exports.getSectorsShort = getSectorsShort;
