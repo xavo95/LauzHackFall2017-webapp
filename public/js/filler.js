@@ -207,7 +207,7 @@ function plotCompanyTimeSeriesSpendMoney(timestampArray, spendmoney, company_nam
     var data = [trace1];
 
     var layout = {
-        title: 'Volume of transaction for: ' + company_name
+        title: 'Capital movement for: ' + company_name
     };
 
     Plotly.purge('plotly-div-company-time-spendmoney');
@@ -434,7 +434,7 @@ function plotCompanyTimeSeriesSpendMoneyMultiple(company_array) {
     }
 
     var layout = {
-        title: 'Volume of transaction for: ',
+        title: 'Capital movement for: ',
         height: 1000
     };
 
