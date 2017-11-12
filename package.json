@@ -4,7 +4,7 @@
   "description": "Mean Template",
   "main": "app.js",
   "scripts": {
-    "start": "cd build && node server.js && cd ..",
+    "start": "node app.js",
     "test": "mocha --recursive"
   },
   "repository": {
