@@ -103,9 +103,9 @@ function plotCompanyCandleStick(timestampArray, openArray, closeArray, maxArray,
         name: company_name,
         x: timestampArray,
         close: closeArray,
-        decreasing: {line: {color: '#7F7F7F'}},
+        decreasing: {line: {color: '#ca1e1c'}},
         high: maxArray,
-        increasing: {line: {color: '#17BECF'}},
+        increasing: {line: {color: '#1eca1c'}},
         line: {color: 'rgba(31,119,180,1)'},
         low: minArray,
         open: openArray,
@@ -152,7 +152,7 @@ function plotCompanyTimeSeries(timestampArray, maxArray, minArray, company_name)
         name: company_name + ' High',
         x: timestampArray,
         y: maxArray,
-        line: {color: '#17BECF'}
+        line: {color: '#1eca1c'}
     };
 
     var trace2 = {
@@ -161,7 +161,7 @@ function plotCompanyTimeSeries(timestampArray, maxArray, minArray, company_name)
         name: company_name + ' Low',
         x: timestampArray,
         y: minArray,
-        line: {color: '#7F7F7F'}
+        line: {color: '#ca1e1c'}
     };
 
     var data = [trace1, trace2];
